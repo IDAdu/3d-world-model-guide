@@ -229,10 +229,10 @@
 
 <figure class="ill tech">
 <svg viewBox="0 0 680 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NeRF 技术管线">
-  <text x="20" y="30" font-size="13.5" font-weight="800" fill="#3f7d6e">④ 从相机向场景发出一条视线，沿线取一串采样点</text>
+  <text x="20" y="30" font-size="13.5" font-weight="800" fill="#3f7d6e">① 从相机向场景发出一条视线，沿线取一串采样点</text>
   <g transform="translate(30,58)">
-    <path d="M0 26 L26 12 L26 40 Z" fill="#57493c"/>
-    <rect x="26" y="18" width="14" height="16" rx="2" fill="#57493c"/>
+    <rect x="0" y="18" width="14" height="16" rx="2" fill="#57493c"/>
+    <path d="M14 12 L40 26 L14 40 Z" fill="#57493c"/>
     <line x1="44" y1="26" x2="300" y2="14" stroke="#b5602f" stroke-width="2"/>
     <path d="M300 14 l -12 -3 l 2 9 Z" fill="#b5602f"/>
     <ellipse cx="180" cy="20" rx="44" ry="24" fill="#c99a3c" opacity="0.25"/>
@@ -240,8 +240,8 @@
     <g fill="#b5602f"><circle cx="90" cy="24" r="4"/><circle cx="130" cy="22" r="4"/><circle cx="170" cy="20.5" r="4"/><circle cx="210" cy="19" r="4"/><circle cx="250" cy="17" r="4"/><circle cx="285" cy="15.5" r="4"/></g>
     <text x="180" y="62" text-anchor="middle" font-size="11.5" fill="#8a7d6c">每个采样点都有：位置 (x,y,z) + 视线方向 (θ,φ)</text>
   </g>
-  <text x="20" y="152" font-size="13.5" font-weight="800" fill="#3f7d6e">① 逐点去问神经网络(MLP)</text>
-  <g transform="translate(40,168)">
+  <text x="20" y="152" font-size="13.5" font-weight="800" fill="#3f7d6e">② 逐点去问神经网络(MLP)</text>
+  <g transform="translate(40,182)">
     <rect x="0" y="0" width="150" height="58" rx="10" fill="#eef5f2" stroke="#3f7d6e" stroke-width="2"/>
     <text x="75" y="24" text-anchor="middle" font-size="12.5" font-weight="800" fill="#3f7d6e">神经网络 F<tspan baseline-shift="sub" font-size="9">Θ</tspan>(小大脑)</text>
     <text x="75" y="44" text-anchor="middle" font-size="11" fill="#57493c">约 8 层，几百万参数</text>
@@ -252,8 +252,8 @@
     <rect x="215" y="26" width="120" height="22" rx="6" fill="#fbf3ea" stroke="#b5602f" stroke-width="1.5"/>
     <text x="275" y="42" text-anchor="middle" font-size="11.5" fill="#b5602f" font-weight="700">颜色 (r,g,b) + 密度 σ</text>
   </g>
-  <text x="400" y="152" font-size="13.5" font-weight="800" fill="#3f7d6e">② 沿视线"加权累加"成一个像素</text>
-  <g transform="translate(415,168)">
+  <text x="400" y="152" font-size="13.5" font-weight="800" fill="#3f7d6e">③ 沿视线"加权累加"成一个像素</text>
+  <g transform="translate(415,182)">
     <rect x="0" y="0" width="230" height="58" rx="10" fill="#fbf3ea" stroke="#c99a3c" stroke-width="2"/>
     <text x="115" y="23" text-anchor="middle" font-size="11.5" fill="#57493c">体积渲染：越不透明的点贡献越大，</text>
     <text x="115" y="42" text-anchor="middle" font-size="11.5" fill="#57493c">被前面挡住的点贡献变小 → 像素颜色</text>
@@ -270,8 +270,8 @@
 <div class="demo-stage" id="nerf-fig">
 <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
   <g transform="translate(52,158)">
-    <path d="M-24 10 L2 -4 L2 24 Z" fill="#57493c"/>
-    <rect x="2" y="2" width="16" height="17" rx="2" fill="#57493c"/>
+    <rect x="-24" y="2" width="16" height="17" rx="2" fill="#57493c"/>
+    <path d="M-8 -2 L18 11 L-8 24 Z" fill="#57493c"/>
     <text x="-4" y="48" text-anchor="middle" font-size="12" fill="#8a7d6c">相机</text>
   </g>
   <line x1="100" y1="168" x2="600" y2="120" stroke="#b5602f" stroke-width="2"/>
