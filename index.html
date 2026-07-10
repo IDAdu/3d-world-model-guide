@@ -84,6 +84,10 @@
   .demo .meter i{display:block; height:100%; background:var(--accent2); border-radius:5px; width:0;}
   .demo .msg{font-weight:800; color:var(--accent2); min-width:70px;}
   #nerf-fig svg{background:#fbfdfc; border:none; box-shadow:none; padding:6px 0 0;}
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch; margin:28px 0;}
+  .duo figure.ill{margin:0; display:flex; flex-direction:column;}
+  .duo figure.ill svg{flex:1;}
+  @media (max-width:700px){ .duo{grid-template-columns:1fr;} }
   @media (max-width:900px){ .wrap{grid-template-columns:1fr;} nav.toc{display:none;} header.hero{padding-top:44px;} }
 </style>
 </head>
@@ -116,43 +120,73 @@
 - 一双**看懂立体世界的"眼睛"**——知道东西在哪、什么形状、离多远；
 - 一个**能预演后果的"脑子"**——动手之前，先在脑内把结果"过一遍"。
 
-先说"脑子"是什么感觉：
+先说"眼睛"。你可能觉得"看见"很简单——手机一拍不就看见了?但**照片是平的**，干活需要的是**深度**：
+
+> **打个比方**：闭上一只眼，伸手把笔帽套回笔上，你多半会戳空——因为你暂时失去了大半深度感。AI 看普通照片，就像永远闭着一只眼：杯子是在桌子"上面"还是"后面"、离手 30 厘米还是 3 米，全得靠它自己算。给 AI 装"眼睛"，就是让它能从平面画面里**恢复出立体世界**。
+
+再说"脑子"是什么感觉：
 
 > **打个比方**：一个熟练的司机看到前面有个球滚到马路上，他脑子里会"闪过"一个画面——球后面可能跟着一个追球的小孩。于是他提前减速。他并没有真的撞上去才知道危险，而是**在脑子里预演了一遍**。
 
+<div class="duo">
 <figure class="ill">
-<svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="司机的脑内预演">
-  <rect x="0" y="170" width="640" height="60" fill="#ece3d4"/>
-  <line x1="20" y1="200" x2="120" y2="200" stroke="#c9bda6" stroke-width="4" stroke-dasharray="18 14"/>
-  <line x1="520" y1="200" x2="620" y2="200" stroke="#c9bda6" stroke-width="4" stroke-dasharray="18 14"/>
-  <g transform="translate(90,150)">
-    <rect x="-46" y="0" width="92" height="30" rx="8" fill="#b5602f"/>
-    <path d="M-30 0 Q-24 -22 0 -22 Q24 -22 30 0 Z" fill="#c98a5a"/>
-    <circle cx="-26" cy="32" r="10" fill="#3a332c"/>
-    <circle cx="26" cy="32" r="10" fill="#3a332c"/>
+<svg viewBox="0 0 340 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="眼睛的挑战：从平面恢复深度">
+  <rect x="30" y="22" width="280" height="150" rx="10" fill="#fff" stroke="#e3d9c9" stroke-width="2"/>
+  <rect x="42" y="34" width="256" height="126" rx="6" fill="#eef3ee"/>
+  <rect x="80" y="92" width="46" height="56" rx="7" fill="#b5602f"/>
+  <path d="M126 104 a14 14 0 0 1 0 30" fill="none" stroke="#b5602f" stroke-width="7"/>
+  <rect x="226" y="116" width="26" height="32" rx="4" fill="#b5602f"/>
+  <path d="M252 122 a8 8 0 0 1 0 18" fill="none" stroke="#b5602f" stroke-width="4"/>
+  <text x="103" y="82" text-anchor="middle" font-size="16" font-weight="800" fill="#8a7d6c">?</text>
+  <text x="239" y="106" text-anchor="middle" font-size="16" font-weight="800" fill="#8a7d6c">?</text>
+  <text x="170" y="192" text-anchor="middle" font-size="12" fill="#8a7d6c">平面照片：两只一样的杯子，谁近谁远?</text>
+  <text x="170" y="222" text-anchor="middle" font-size="12.5" font-weight="800" fill="#3f7d6e">"看懂" = 从平面里恢复出深度</text>
+  <g transform="translate(52,258)">
+    <path d="M-18 0 Q0 -13 18 0 Q0 13 -18 0 Z" fill="#fff" stroke="#57493c" stroke-width="2"/>
+    <circle cx="0" cy="0" r="4.5" fill="#57493c"/>
   </g>
-  <circle cx="330" cy="190" r="16" fill="#c99a3c"/>
-  <path d="M330 174 a16 16 0 0 1 0 32 M318 182 a16 16 0 0 0 24 16" stroke="#8a6a1e" stroke-width="1.5" fill="none"/>
-  <circle cx="160" cy="120" r="5" fill="#fff" stroke="#3f7d6e" stroke-width="1.5"/>
-  <circle cx="180" cy="100" r="8" fill="#fff" stroke="#3f7d6e" stroke-width="1.5"/>
-  <rect x="200" y="24" width="300" height="92" rx="18" fill="#fbf6ee" stroke="#3f7d6e" stroke-width="2" stroke-dasharray="7 5"/>
-  <text x="228" y="52" font-size="13" fill="#3f7d6e" font-weight="700">脑内预演：</text>
-  <circle cx="300" cy="86" r="11" fill="#c99a3c"/>
-  <g transform="translate(370,58)" stroke="#57493c" stroke-width="2.5" fill="none" stroke-linecap="round">
-    <circle cx="0" cy="0" r="8" fill="#e0b07a" stroke="none"/>
-    <line x1="0" y1="8" x2="0" y2="30"/>
-    <line x1="0" y1="14" x2="-12" y2="24"/>
-    <line x1="0" y1="14" x2="12" y2="22"/>
-    <line x1="0" y1="30" x2="-10" y2="46"/>
-    <line x1="0" y1="30" x2="10" y2="46"/>
-  </g>
-  <path d="M318 86 L350 78" stroke="#b5602f" stroke-width="2" fill="none"/>
-  <path d="M350 78 l -11 -1 l 5 9 Z" fill="#b5602f"/>
-  <text x="452" y="90" font-size="12.5" fill="#8a7d6c">球后面</text>
-  <text x="452" y="107" font-size="12.5" fill="#8a7d6c">可能有小孩!</text>
+  <line x1="78" y1="258" x2="305" y2="258" stroke="#c9bda6" stroke-width="2" stroke-dasharray="6 5"/>
+  <rect x="132" y="244" width="16" height="19" rx="3" fill="#b5602f"/>
+  <rect x="250" y="249" width="10" height="12" rx="2" fill="#b5602f"/>
+  <text x="140" y="288" text-anchor="middle" font-size="11.5" fill="#57493c">0.4 米</text>
+  <text x="255" y="288" text-anchor="middle" font-size="11.5" fill="#57493c">2 米</text>
 </svg>
-<figcaption>图 1 · "脑内预演"：看到球，就能提前想到"后面可能追来一个孩子"，于是不用真撞上就懂得减速。AI 研究者想给机器也装上这个能力。</figcaption>
+<figcaption>图 1 · "眼睛"的挑战：照片是平的，多远要靠算。想体验没有深度的世界，闭上一只眼去套笔帽试试。</figcaption>
 </figure>
+<figure class="ill">
+<svg viewBox="0 0 340 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="脑子的本事：脑内预演">
+  <rect x="34" y="24" width="272" height="128" rx="16" fill="#fbf6ee" stroke="#3f7d6e" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="54" y="50" font-size="12.5" font-weight="700" fill="#3f7d6e">脑内预演：</text>
+  <circle cx="96" cy="102" r="11" fill="#c99a3c"/>
+  <path d="M110 98 L150 88" stroke="#b5602f" stroke-width="2"/>
+  <path d="M150 88 l -11 -1 l 5 9 Z" fill="#b5602f"/>
+  <g transform="translate(185,72)" stroke="#57493c" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <circle cx="0" cy="0" r="8" fill="#e0b07a" stroke="none"/>
+    <line x1="0" y1="8" x2="0" y2="28"/>
+    <line x1="0" y1="13" x2="-11" y2="22"/>
+    <line x1="0" y1="13" x2="11" y2="20"/>
+    <line x1="0" y1="28" x2="-9" y2="43"/>
+    <line x1="0" y1="28" x2="9" y2="43"/>
+  </g>
+  <text x="242" y="98" font-size="11.5" fill="#8a7d6c">球后面可能</text>
+  <text x="242" y="114" font-size="11.5" fill="#8a7d6c">有小孩！</text>
+  <circle cx="120" cy="176" r="5" fill="#fff" stroke="#3f7d6e" stroke-width="1.5"/>
+  <circle cx="100" cy="196" r="7" fill="#fff" stroke="#3f7d6e" stroke-width="1.5"/>
+  <rect x="0" y="238" width="340" height="52" fill="#ece3d4"/>
+  <line x1="10" y1="264" x2="80" y2="264" stroke="#c9bda6" stroke-width="4" stroke-dasharray="14 12"/>
+  <line x1="270" y1="264" x2="330" y2="264" stroke="#c9bda6" stroke-width="4" stroke-dasharray="14 12"/>
+  <g transform="translate(80,222)">
+    <rect x="-40" y="0" width="80" height="26" rx="7" fill="#b5602f"/>
+    <path d="M-26 0 Q-21 -19 0 -19 Q21 -19 26 0 Z" fill="#c98a5a"/>
+    <circle cx="-22" cy="28" r="9" fill="#3a332c"/>
+    <circle cx="22" cy="28" r="9" fill="#3a332c"/>
+  </g>
+  <circle cx="252" cy="252" r="14" fill="#c99a3c"/>
+  <path d="M252 238 a14 14 0 0 1 0 28 M241 245 a14 14 0 0 0 21 14" stroke="#8a6a1e" stroke-width="1.5" fill="none"/>
+</svg>
+<figcaption>图 2 · "脑子"的本事：看到球滚出来，脑内先"放一遍电影"——后面可能跟着孩子，提前减速，不用真撞上才知道。</figcaption>
+</figure>
+</div>
 
 给 AI 装上这样的"眼睛"和"脑子"，正是当下人工智能最热的两条研究线——**3D 技术**和**世界模型(World Model)**，连李飞飞、杨立昆(Yann LeCun)这些顶级科学家都在押注。这份材料不需要你懂任何技术，全程用生活里的案例来比喻；想多懂一点的读者可以看穿插其中的**技术示意图**。更棒的是增加了**五个可以动手玩的小实验**，你可以体验转一转 3D 模型、亲手“泼”一次高斯、替 AI 做一次“脑内预演”。读完，相信大家能自己回答开场的那个问题：AI 距离帮人倒一杯水，到底还有多远？
 
@@ -193,7 +227,7 @@
   <text x="500" y="212" text-anchor="middle" font-size="16" font-weight="700" fill="#57493c">立体模型(3D)</text>
   <text x="500" y="232" text-anchor="middle" font-size="12.5" fill="#8a7d6c">可任意旋转、走近观察</text>
 </svg>
-<figcaption>图 2 · 平面照片只记录一个角度；立体模型记录的是物体本身，能从任何方向查看。</figcaption>
+<figcaption>图 3 · 平面照片只记录一个角度；立体模型记录的是物体本身，能从任何方向查看。</figcaption>
 </figure>
 
 那么，电脑里到底是**怎么存**一个立体物件的?常见有四种"存法"，你可以在下面亲手切换感受一下：
@@ -262,7 +296,7 @@
   </g>
   <text x="340" y="258" text-anchor="middle" font-size="12" fill="#b5602f" font-weight="700">训练 = 让渲染出的像素尽量接近实拍照片，反复调整"小大脑"的参数</text>
 </svg>
-<figcaption>图 3 · NeRF 管线(简化)：视线采样 → 神经网络逐点回答"什么颜色、多不透明" → 沿线累加得到像素。</figcaption>
+<figcaption>图 4 · NeRF 管线(简化)：视线采样 → 神经网络逐点回答"什么颜色、多不透明" → 沿线累加得到像素。</figcaption>
 </figure>
 
 下面这个小实验，让你亲手扮演一次"沿着视线采样"的过程——拖动滑块，看看一条视线是怎么攒出一个像素颜色的：
@@ -339,7 +373,7 @@
   <text x="452" y="192" text-anchor="middle" font-size="12" fill="#a07b28" font-weight="700">哪里画错了，就回头微调那些斑点(梯度下降)</text>
   <text x="340" y="232" text-anchor="middle" font-size="12" fill="#3f7d6e" font-weight="700">同时自动"增删"：细节不够的地方分裂/复制斑点，没用的斑点删掉</text>
 </svg>
-<figcaption>图 4 · 3D 高斯泼溅管线(简化)：百万级彩色半透明斑点 → 快速"泼"到屏幕 → 与照片对答案 → 反复微调并自动增删斑点。</figcaption>
+<figcaption>图 5 · 3D 高斯泼溅管线(简化)：百万级彩色半透明斑点 → 快速"泼"到屏幕 → 与照片对答案 → 反复微调并自动增删斑点。</figcaption>
 </figure>
 
 它有多快?NeRF 每秒可能只能生成几张画面(卡顿)，而高斯泼溅能做到**每秒一百多张**——也就是丝般顺滑的实时效果，你可以像玩游戏一样在场景里流畅走动。训练时间也从"一两天"缩短到"几分钟"。
@@ -383,7 +417,7 @@
   <text x="340" y="200" text-anchor="middle" font-size="12.5" fill="#3f7d6e" font-weight="800">一次前向计算、约 1 秒全部输出 —— 不用针对新场景重新训练</text>
   <text x="340" y="224" text-anchor="middle" font-size="11" fill="#8a7d6c">(思路和大语言模型一样：见多识广的通用大模型，一次推理直接给答案)</text>
 </svg>
-<figcaption>图 5 · VGGT(简化)：照片进 → Transformer 交替看"图内"和"图间" → 相机、深度、点图、跟踪一次全出。Transformer 是大语言模型同款的通用架构；"注意力"指模型自己学会该重点看哪。</figcaption>
+<figcaption>图 6 · VGGT(简化)：照片进 → Transformer 交替看"图内"和"图间" → 相机、深度、点图、跟踪一次全出。Transformer 是大语言模型同款的通用架构；"注意力"指模型自己学会该重点看哪。</figcaption>
 </figure>
 
 <figure class="ill">
@@ -408,7 +442,7 @@
   <path d="M462 70 l -14 -6 l 0 12 Z" fill="#3f7d6e"/>
   <text x="340" y="188" text-anchor="middle" font-size="12.5" fill="#b5602f" font-weight="700">趋势：越来越快 · 越来越通用 →</text>
 </svg>
-<figcaption>图 6 · 把真实场景搬进电脑，五年里跨了三大步——一步比一步快、一步比一步通用。</figcaption>
+<figcaption>图 7 · 把真实场景搬进电脑，五年里跨了三大步——一步比一步快、一步比一步通用。</figcaption>
 </figure>
 
 > **一句话概括这一章的演变**：从"慢工出细活的画师"(NeRF)→ "又快又爽的棉花糖大师"(高斯泼溅)→ "看一眼就懂的老法师"(VGGT)。核心趋势就是**越来越快、越来越通用**。这一点很重要：正因为电脑现在能又快又好地理解立体场景，才有可能把这个能力装进 AI 的"想象引擎"里。
@@ -441,7 +475,7 @@
   <text x="145" y="176" text-anchor="middle" font-size="12.5" fill="#8a7d6c">一句话</text>
   <text x="470" y="176" text-anchor="middle" font-size="12.5" fill="#8a7d6c">几秒后：可旋转的立体模型</text>
 </svg>
-<figcaption>图 7 · "文字生成 3D"——输入一句描述，AI 直接造出一个能转着看的立体物件。</figcaption>
+<figcaption>图 8 · "文字生成 3D"——输入一句描述，AI 直接造出一个能转着看的立体物件。</figcaption>
 </figure>
 
 ## 起步：借用"会画画的 AI"来雕刻(2022 年)
@@ -495,7 +529,7 @@
   <text x="505" y="218" text-anchor="middle" font-size="11.5" fill="#3f7d6e" font-weight="700">快(几秒)· 像"3D 打印机"发指令出货</text>
   <text x="340" y="258" text-anchor="middle" font-size="12" fill="#8a7d6c">代表：DreamFusion(左) → LRM / CLAY / TRELLIS / 混元 3D / TripoSG(右)</text>
 </svg>
-<figcaption>图 8 · 文字生成 3D 的两条路线：左边"边雕边问"循环上万次；右边一次前向直接出货。行业已整体转向右边。</figcaption>
+<figcaption>图 9 · 文字生成 3D 的两条路线：左边"边雕边问"循环上万次；右边一次前向直接出货。行业已整体转向右边。</figcaption>
 </figure>
 
 ## 现在到什么程度了
@@ -555,7 +589,7 @@
   <path d="M120 94 l -5 11 l 10 0 Z" fill="#c99a3c"/>
   <text x="176" y="190" font-size="10.5" fill="#a07b28">回到现实收集新经验</text>
 </svg>
-<figcaption>图 9 · Dreamer 系列(简化)：把画面压缩成"要点"，在要点层面做梦推演；决策者在梦里练级，练成再上场。"奖励"= 游戏得分之类"做得好"的信号；Actor-Critic 是这位决策者的学名。</figcaption>
+<figcaption>图 10 · Dreamer 系列(简化)：把画面压缩成"要点"，在要点层面做梦推演；决策者在梦里练级，练成再上场。"奖励"= 游戏得分之类"做得好"的信号；Actor-Critic 是这位决策者的学名。</figcaption>
 </figure>
 
 光看图不过瘾?下面这个小实验让你体验一次"世界模型式决策"——先在脑内预演，满意了再真的执行：
@@ -601,7 +635,7 @@
   <text x="500" y="182" text-anchor="middle" font-size="11" fill="#57493c">→ 我也该刹车</text>
   <text x="481" y="210" text-anchor="middle" font-size="11.5" fill="#8a7d6c">省力、更接近人脑思路</text>
 </svg>
-<figcaption>图 10 · 两大门派：一派把未来"演成电影"(逼真但可能不懂物理)，一派只抓"谁在动、会怎样"的关键信息(省力、更像人脑)。</figcaption>
+<figcaption>图 11 · 两大门派：一派把未来"演成电影"(逼真但可能不懂物理)，一派只抓"谁在动、会怎样"的关键信息(省力、更像人脑)。</figcaption>
 </figure>
 
 ### 门派一：放电影派(生成逼真画面)
@@ -657,7 +691,7 @@
   <text x="596" y="133" text-anchor="end" font-size="10.5" fill="#b5602f" font-weight="700">预测器：在"要点"层面预测 ↓</text>
   <text x="505" y="212" text-anchor="middle" font-size="11" fill="#3f7d6e" font-weight="700">只需预测抽象要点，不画像素 → 省力，更利于决策</text>
 </svg>
-<figcaption>图 11 · 生成式 vs JEPA(简化)：前者在像素空间里"画"未来；后者把过去和未来都压成"要点"，只在要点层面做预测。图中"损失"就是第一章小知识里的"海拔"：错得有多离谱。</figcaption>
+<figcaption>图 12 · 生成式 vs JEPA(简化)：前者在像素空间里"画"未来；后者把过去和未来都压成"要点"，只在要点层面做预测。图中"损失"就是第一章小知识里的"海拔"：错得有多离谱。</figcaption>
 </figure>
 
 这两派谁对?目前还没有定论，很可能最终是**互补**的。不过就在"放电影派"风头最劲的时候，科学家给它出了一张考卷——结果直接把整个领域的方向都改了。
@@ -699,7 +733,7 @@
   </g>
   <text x="505" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#b5602f">新题型(没见过)：全懵</text>
 </svg>
-<figcaption>图 12 · 测试证明：逼真的视频 AI 更像"背答案的学霸"——没真懂物理规律，一遇没见过的情况就出错。</figcaption>
+<figcaption>图 13 · 测试证明：逼真的视频 AI 更像"背答案的学霸"——没真懂物理规律，一遇没见过的情况就出错。</figcaption>
 </figure>
 
 这个发现非常重要。它说明：**光靠"看视频、生成逼真画面"，造不出真正靠谱的世界模型。** 想让 AI 的"脑内预演"不出错——球不会凭空消失、小孩不会穿墙、水不会倒着流——它必须真正理解这个世界是**立体的**、物体是**有前后遮挡的**、东西是**会遵守重力和碰撞规律的**。
@@ -745,7 +779,7 @@
   <text x="530" y="165" text-anchor="middle" font-size="11.5" fill="#8a7d6c">想清楚下一步该怎么做</text>
   <text x="320" y="205" text-anchor="middle" font-size="12.5" fill="#b5602f" font-weight="700">终极目标：把三种能力合成一个"全能世界模型"</text>
 </svg>
-<figcaption>图 13 · 李飞飞的三分法。只会"画得像"(画面型)远远不够，还得懂真实的立体与物理(仿真型)，才能支撑起靠谱的决策(决策型)。</figcaption>
+<figcaption>图 14 · 李飞飞的三分法。只会"画得像"(画面型)远远不够，还得懂真实的立体与物理(仿真型)，才能支撑起靠谱的决策(决策型)。</figcaption>
 </figure>
 
 | 类型 | 好比是 | 它擅长什么 | 它的短板 |
@@ -795,7 +829,7 @@
   <text x="581" y="102" text-anchor="middle" font-size="10.5" fill="#8a7d6c">预演几种开法，选最安全的</text>
   <text x="340" y="166" text-anchor="middle" font-size="12" fill="#b5602f" font-weight="700">好处：哪怕遇到从没见过的怪东西(掉落的沙发、侧翻的卡车)，只要知道"那格被占了"就能避开</text>
 </svg>
-<figcaption>图 14 · 占用栅格式自动驾驶(简化)：环视画面 → 抬升到 3D 体素 → 判断每格占用 → 预演并规划。</figcaption>
+<figcaption>图 15 · 占用栅格式自动驾驶(简化)：环视画面 → 抬升到 3D 体素 → 判断每格占用 → 预演并规划。</figcaption>
 </figure>
 
 不管哪派，套路都是一样的：**先在脑子里预演接下来的画面 → 想象几种开法各会怎样 → 选最安全的那种。** 这就是世界模型在替司机"提前一步想"。
@@ -858,7 +892,7 @@
   <text x="340" y="382" text-anchor="middle" font-size="13" font-weight="800" fill="#b5602f">合流：全能世界模型</text>
   <text x="340" y="402" text-anchor="middle" font-size="11" fill="#57493c">World Labs(李飞飞)· Marble | 自动驾驶占用栅格阵营</text>
 </svg>
-<figcaption>图 15 · 产业地图(据本文内容整理，划分做了简化)：两类"想象引擎"和两类"立体技术"，正从四个方向汇向同一个目标。</figcaption>
+<figcaption>图 16 · 产业地图(据本文内容整理，划分做了简化)：两类"想象引擎"和两类"立体技术"，正从四个方向汇向同一个目标。</figcaption>
 </figure>
 
 > **一句话概括**：未来的目标，是造出一个"全能世界模型"——它既能画出逼真的画面，又能保证背后的立体结构和物理是真实的，还能据此帮机器人、汽车做决策。三种能力合为一体。这一天还没到，但方向已经很清楚了。
